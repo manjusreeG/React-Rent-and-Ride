@@ -1,0 +1,10 @@
+.bold{
+    font-weight: bold;
+}
+
+.inputField{
+    display: inline-block;
+    width: 45%;
+    margin: '20px';
+    text-align: center;
+}
