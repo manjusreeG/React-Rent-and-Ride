@@ -1,4 +1,4 @@
-# react-rent-and-ride
+# Rent-And-Ride
 
 ## Guidelines
 - To start the app:
