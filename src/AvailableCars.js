@@ -14,7 +14,6 @@ class AvailableCars extends Component {
             width: '250px',
             display: 'inline-block',
             margin: '10px',
-            // background: 'linear-gradient(115deg, darkcyan, transparent)',
             padding: '10px',
             fontSize: '17px',
             border: '0.3px solid #99FFCC',
@@ -26,11 +25,15 @@ class AvailableCars extends Component {
             <div className="container" style={{ marginTop: '5%' }}>
                 <div className="row">
                     <div className="col-sm-12 ">
-                        {this.props.filteredCars.map((car, index) => {                          
+                        {this.props.filteredCars.map((car, index) => {
+                            let timeCalc = (this.props.duration * car.pricePerDay)
+                            let distanceCalc = (this.props.distance * car.pricePerKm)
+                            let rentalPrice = distanceCalc + timeCalc
                             return (<Fragment>
                                 <div style={divStyle} key={index}>
                                     <img src={car.picturePath} style={style}></img>
                                     <div>{car.model}</div> <div>{car.brand}</div>
+                                    <div>Rental Price : {rentalPrice}</div>
                                 </div>
                             </Fragment>
                             )
