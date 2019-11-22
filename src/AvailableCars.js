@@ -26,14 +26,28 @@ class AvailableCars extends Component {
                 <div className="row">
                     <div className="col-sm-12 ">
                         {this.props.filteredCars.map((car, index) => {
-                            let timeCalc = (this.props.duration * car.pricePerDay)
+                            let noOfDays = this.props.duration
+                            let timeCalc = 0
+                            if (noOfDays >= 1) {
+                                timeCalc = car.pricePerDay * 1
+                            }
+                            if (noOfDays > 1 && noOfDays <= 4) {
+                                timeCalc = ((car.pricePerDay - car.pricePerDay * 0.1) * (noOfDays - 1)) + timeCalc
+                            } else if (noOfDays > 4 && noOfDays <= 10) {
+                                timeCalc = ((car.pricePerDay - car.pricePerDay * 0.1) * 3) + timeCalc
+                                timeCalc += ((car.pricePerDay - car.pricePerDay * 0.3) * (noOfDays - 4))
+                            } else if (noOfDays > 10) {
+                                timeCalc += ((car.pricePerDay - car.pricePerDay * 0.1) * 3)
+                                timeCalc += ((car.pricePerDay - car.pricePerDay * 0.3) * 6)
+                                timeCalc += (car.pricePerDay - car.pricePerDay * 0.5) * (noOfDays - 10)
+                            }
                             let distanceCalc = (this.props.distance * car.pricePerKm)
                             let rentalPrice = distanceCalc + timeCalc
                             return (<Fragment>
                                 <div style={divStyle} key={index}>
                                     <img src={car.picturePath} style={style}></img>
                                     <div>{car.model}</div> <div>{car.brand}</div>
-                                    <div>Rental Price : {rentalPrice}</div>
+                                    <div style={{fontSize:'24px'}}>Rental Price : {rentalPrice}</div>
                                 </div>
                             </Fragment>
                             )
