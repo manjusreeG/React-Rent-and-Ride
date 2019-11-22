@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DisplayCars from './DisplayCars'
 import Background from '../server/public/bgImage.jpg'
+import CarsHeader from './CarsHeader';
 
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
     return (
       <div style={backgroundImageStyle}>
         <div style={style}>Rent And Ride </div>
+        <CarsHeader></CarsHeader>
         <DisplayCars />
       </div>
     )
